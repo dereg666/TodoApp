@@ -8,7 +8,6 @@ import './index.css';
 ReactDOM.render(
   <div>
     <TodoApp />
-    <TodoList />
     <TodoItem />
   </div>,
   document.getElementById('root'),
