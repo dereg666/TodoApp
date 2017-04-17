@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TodoItem from './TodoItem';
 import './TodoApp.css';
 
 
-class TodoList extends Component {
+class TodoSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -127,12 +126,12 @@ class TodoList extends Component {
   }
 }
 
-TodoList.defaultProps = {
+TodoSidebar.defaultProps = {
   listName: '0 This is a list',
   listItems: [],
 };
 
-TodoList.propTypes = {
+TodoSidebar.propTypes = {
   listName: PropTypes.string.isRequired,
   listItems: PropTypes.array.isRequired,
   addItemsFunc: PropTypes.func.isRequired,
@@ -143,4 +142,4 @@ TodoList.propTypes = {
   showMode: PropTypes.number.isRequired,
 };
 
-export default TodoList;
+export default TodoSidebar;

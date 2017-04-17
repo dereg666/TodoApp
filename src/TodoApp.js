@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList';
+import TodoSidebar from './TodoSidebar';
 import './TodoApp.css';
 
 const sizeTime = 1000;
@@ -113,33 +114,35 @@ class TodoApp extends Component {
       <div>
         <div className="header">
           <h1 >&nbsp; TODOs</h1><br />
+          <div className="boxUndone"> Undone: {this.state.numUndoneDone[0]} <br /></div>
+          <div className="boxDone"> Done: {this.state.numUndoneDone[1]} </div>
         </div>
         <div className="TodoAPP">
-          <div className="buttons">
+          <div className="sideBar">
             <button type="button" onClick={() => this.setShowState(2)}>Show All</button>
             <button type="button" onClick={() => this.setShowState(1)}>Show Undone</button>
             <button type="button" onClick={() => this.setShowState(0)}>Show Done</button>
-            <div> Undone: {this.state.numUndoneDone[0]}, Done {this.state.numUndoneDone[1]} </div>
+              
+            <div className="appInputBar">
+              <input
+                className="appInputBox"
+                type="text"
+                value={this.state.addListValue}
+                placeholder={this.state.addListHolder}
+                onKeyDown={this.clickEnter}
+                onChange={this.handleChange}
+                onFocus={this.textFocus}
+                onBlur={this.textBlur}
+              />
+              <input
+                className="appSubmitButton"
+                type="submit"
+                value="Add"
+                onClick={this.submitFunction}
+              />
+            </div><br />
           </div>
-          <div className="appInputBar">
-            <input
-              className="appInputBox"
-              type="text"
-              value={this.state.addListValue}
-              placeholder={this.state.addListHolder}
-              onKeyDown={this.clickEnter}
-              onChange={this.handleChange}
-              onFocus={this.textFocus}
-              onBlur={this.textBlur}
-            />
-            <input
-              className="appSubmitButton"
-              type="submit"
-              value="Add"
-              onClick={this.submitFunction}
-            />
-          </div><br />
-          <div>
+          <div className="listArea">
             {this.state.lists.map(l => <TodoList
               listName={l.todoName}
               listItems={l.todoItems}

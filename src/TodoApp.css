@@ -1,35 +1,96 @@
+body {
+  background-image: linear-gradient(270deg, #4da0cc 0%, #deede8 100%);
+}
+
 .header {
   display: -webkit-flex;
   display: flex;
   width : 100%;
-  height : 10%;
+  height : 6%;
   align-items: right;
   justify-content: right;
+  color: white;
+  //background-color: #185923;
+  background-color: rgba(155, 170, 181, 0.6);
+  box-shadow: 0 5px 7px 0 rgba(0,0,0,0.24), 0 0px 0px 0 rgba(0,0,0,0.19);
 }
 
+.boxUndone {
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 23px;
+  align-items: left;
+  justify-content: left;
+  margin-right: 10px;
+}
+
+.boxDone {
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  align-items: left;
+  justify-content: left;
+  margin-right: 10px;
+}
+
+.sideBar {
+  position: fixed;
+  left: 0;
+  top: 11.2%;
+  width : 23%;
+  height : calc(88.8% - 50px);
+  vertical-align: top;
+  background-color: rgba(0, 0, 0, 0);
+  border-right: groove #185923;
+  border-width: 1px;
+  overflow-y: auto;
+  max-height : calc(88% - 50px);
+}
+.listArea {
+  position: fixed;
+  align-items: top;
+  right:0;
+  top: 11.2%;
+  width : 75%;
+  overflow-y: auto;
+  max-height : 88.8%;
+}
 .TodoApp {
   display: -webkit-flex;
   display: flex;
   width : 100%;
   height : 90%;
 }
+.appInputBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 23%;
+}
 .appInputBox {
+  // background-color: #e3efe5;
+  background-color: rgba(0, 0, 0, 0);
   text-align: left;
   font-size: 20px;
   float: left;
-  width: 30%;
+  width: 88%;
   padding: 8px 14px;
   margin: 1% 1%;
   border: none;
   border-bottom: 2px solid;
-  border-bottom-color: #57c657;
+  border-bottom-color: #18594a;
 }
 .appInputBox[type=text]:focus {
   outline-width: 0;
 }
 .appSubmitButton {
   padding: 3px 6px;
-  margin: 1.8% -55px;
+  margin: 8px -50px;
   font-size: 15px;
   background-color: white; /* Green */
   border-radius: 4px;
@@ -43,4 +104,22 @@
 }
 .appSubmitButton[type=submit]:active {
   transform: translateY(1px);
+}
+
+.todoItem {
+  height: 20px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: right;
+          align-items: right;
+  -webkit-justify-content: right;
+          justify-content: right;
+}
+
+.listBlock {
+  display: inline-block;
+  vertical-align: top;
+  width: 22%;
+  height: 40%;
+  margin: 1em;
 }
