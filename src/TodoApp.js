@@ -26,6 +26,9 @@ class TodoApp extends Component {
     this.deletingList = this.deletingList.bind(this);
     this.setShowState = this.setShowState.bind(this);
   }
+  setShowState(mode) {
+    this.setState({ showMode: mode });
+  }
   textFocus() {
     this.setState({ addListHolder: '' });
   }
@@ -105,9 +108,6 @@ class TodoApp extends Component {
     this.setState({ lists: tempLists });
     this.setState({ numUndoneDone: tempUndoneDone });
   }
-  setShowState(mode) {
-    this.setState({ showMode: mode });
-  }
   render() {
     return (
       <div>
@@ -120,11 +120,10 @@ class TodoApp extends Component {
             <button type="button" onClick={() => this.setShowState(1)}>Show Undone</button>
             <button type="button" onClick={() => this.setShowState(0)}>Show Done</button>
             <div> Undone: {this.state.numUndoneDone[0]}, Done {this.state.numUndoneDone[1]} </div>
-            <br />
-            <br />
           </div>
           <div className="appInputBar">
             <input
+              className="appInputBox"
               type="text"
               value={this.state.addListValue}
               placeholder={this.state.addListHolder}
@@ -134,6 +133,7 @@ class TodoApp extends Component {
               onBlur={this.textBlur}
             />
             <input
+              className="appSubmitButton"
               type="submit"
               value="Add"
               onClick={this.submitFunction}

@@ -13,3 +13,34 @@
   width : 100%;
   height : 90%;
 }
+.appInputBox {
+  text-align: left;
+  font-size: 20px;
+  float: left;
+  width: 30%;
+  padding: 8px 14px;
+  margin: 1% 1%;
+  border: none;
+  border-bottom: 2px solid;
+  border-bottom-color: #57c657;
+}
+.appInputBox[type=text]:focus {
+  outline-width: 0;
+}
+.appSubmitButton {
+  padding: 3px 6px;
+  margin: 1.8% -55px;
+  font-size: 15px;
+  background-color: white; /* Green */
+  border-radius: 4px;
+  border: 1px solid #a0dba0;
+}
+.appSubmitButton[type=submit]:focus {
+  outline-width: 0;
+}
+.appSubmitButton[type=submit]:hover {
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 0px 0px 0 rgba(0,0,0,0.19);
+}
+.appSubmitButton[type=submit]:active {
+  transform: translateY(1px);
+}
