@@ -1,0 +1,9 @@
+.todoItem {
+  height: 20px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: right;
+          align-items: right;
+  -webkit-justify-content: right;
+          justify-content: right;
+}

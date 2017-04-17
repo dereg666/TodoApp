@@ -71,11 +71,11 @@ class TodoList extends Component {
       <div className="list">
         <div className="listTitle">
           {this.state.editing === 0 ?
-            <div>
+            <span>
               {this.props.listName.substr(this.props.listName.indexOf(' ') + 1) }
               <button type="button" onClick={this.clickEditListName}>Edit</button>
-            </div> :
-            <div>
+            </span> :
+            <span>
               <input
                 type="text"
                 value={this.state.changeName}
@@ -90,13 +90,13 @@ class TodoList extends Component {
                 value="Submit"
                 onClick={this.submitFunction}
               />
-            </div>
+            </span>
           }
           <button
             type="button"
             onClick={() => this.props.deleteListsFunc(Number(this.props.listName.split(' ', 1)))}
           >Delete</button>
-        </div>
+        </div><br />
         <div className="listInputBar">
           <input
             type="text"

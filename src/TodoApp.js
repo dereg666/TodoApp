@@ -110,45 +110,47 @@ class TodoApp extends Component {
   }
   render() {
     return (
-      <div className="TodoApp">
+      <div>
         <div className="header">
           <h1 >&nbsp; TODOs</h1><br />
         </div>
-        <div className="buttons">
-          <button type="button" onClick={() => this.setShowState(2)}>Show All</button>
-          <button type="button" onClick={() => this.setShowState(1)}>Show Undone</button>
-          <button type="button" onClick={() => this.setShowState(0)}>Show Done</button>
-          <div> Undone: {this.state.numUndoneDone[0]}, Done {this.state.numUndoneDone[1]} </div>
-          <br />
-          <br />
-        </div>
-        <div className="appInputBar">
-          <input
-            type="text"
-            value={this.state.addListValue}
-            placeholder={this.state.addListHolder}
-            onKeyDown={this.clickEnter}
-            onChange={this.handleChange}
-            onFocus={this.textFocus}
-            onBlur={this.textBlur}
-          />
-          <input
-            type="submit"
-            value="Add"
-            onClick={this.submitFunction}
-          />
-        </div><br />
-        <div>
-          {this.state.lists.map(l => <TodoList
-            listName={l.todoName}
-            listItems={l.todoItems}
-            addItemsFunc={this.addingItem}
-            checkItemsFunc={this.checkingItem}
-            deleteItemsFunc={this.deletingItem}
-            changeNameFunc={this.changingName}
-            deleteListsFunc={this.deletingList}
-            showMode={this.state.showMode}
-          />)}
+        <div className="TodoAPP">
+          <div className="buttons">
+            <button type="button" onClick={() => this.setShowState(2)}>Show All</button>
+            <button type="button" onClick={() => this.setShowState(1)}>Show Undone</button>
+            <button type="button" onClick={() => this.setShowState(0)}>Show Done</button>
+            <div> Undone: {this.state.numUndoneDone[0]}, Done {this.state.numUndoneDone[1]} </div>
+            <br />
+            <br />
+          </div>
+          <div className="appInputBar">
+            <input
+              type="text"
+              value={this.state.addListValue}
+              placeholder={this.state.addListHolder}
+              onKeyDown={this.clickEnter}
+              onChange={this.handleChange}
+              onFocus={this.textFocus}
+              onBlur={this.textBlur}
+            />
+            <input
+              type="submit"
+              value="Add"
+              onClick={this.submitFunction}
+            />
+          </div><br />
+          <div>
+            {this.state.lists.map(l => <TodoList
+              listName={l.todoName}
+              listItems={l.todoItems}
+              addItemsFunc={this.addingItem}
+              checkItemsFunc={this.checkingItem}
+              deleteItemsFunc={this.deletingItem}
+              changeNameFunc={this.changingName}
+              deleteListsFunc={this.deletingList}
+              showMode={this.state.showMode}
+            />)}
+          </div>
         </div>
       </div>
     );
