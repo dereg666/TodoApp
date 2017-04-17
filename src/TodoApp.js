@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TodoList from './TodoList';
 import TodoSidebar from './TodoSidebar';
 import './TodoApp.css';
+import './css/ionicons.css';
 
 const sizeTime = 1000;
 
@@ -118,11 +119,18 @@ class TodoApp extends Component {
           <div className="boxDone"> Done: {this.state.numUndoneDone[1]} </div>
         </div>
         <div className="TodoAPP">
-          <div className="sideBar">
-            <button type="button" onClick={() => this.setShowState(2)}>Show All</button>
-            <button type="button" onClick={() => this.setShowState(1)}>Show Undone</button>
-            <button type="button" onClick={() => this.setShowState(0)}>Show Done</button>
-              
+          <div className="side">
+            <div className="sideBar">
+              <button className="sideBarRow threeBottons" type="button" onClick={() => this.setShowState(2)}>Show All</button>
+              <button className="sideBarRow threeBottons" type="button" onClick={() => this.setShowState(1)}>Show Undone</button>
+              <button className="sideBarRow threeBottons" type="button" onClick={() => this.setShowState(0)}>Show Done</button>
+              {this.state.lists.map(l => <TodoSidebar
+                listName={l.todoName}
+                changeNameFunc={this.changingName}
+                deleteListsFunc={this.deletingList}
+                showMode={this.state.showMode}
+              />)}
+            </div>
             <div className="appInputBar">
               <input
                 className="appInputBox"

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './TodoApp.css';
+import './css/ionicons.css';
 
 
 
@@ -14,14 +15,15 @@ class TodoItem extends Component {
       <div className="todoItem">
         <input
           type="checkBox"
+          className="checkBox"
           defaultChecked={this.props.itemState}
           onClick={() => this.props.checkItemsFunc(Number(this.props.itemName.split(' ', 1)))}
         />
-        <label htmlFor="item">{this.props.itemName.substr(this.props.itemName.indexOf(' ') + 1)}</label>
-        <button
-          type="button"
+        <label className="itemName"htmlFor="item">{this.props.itemName.substr(this.props.itemName.indexOf(' ') + 1)}</label>
+        <i
+          className="icon ion-trash-b myIcon"
           onClick={() => this.props.deleteItemsFunc(Number(this.props.itemName.split(' ', 1)))}
-        >Delete</button>
+        ></i>
       </div>
     );
   }

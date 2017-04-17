@@ -8,9 +8,6 @@ class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
-      changeName: this.props.listName.substr(this.props.listName.indexOf(' ') + 1),
-      changeNameHolder: 'Type to change',
       addItemHolder: 'Type to add items',
       addItemValue: '',
       editing: 0,
@@ -25,23 +22,16 @@ class TodoList extends Component {
   textFocus() {
     if (this.state.editing === 0) {
       this.setState({ addItemHolder: '' });
-    } else if (this.state.editing === 1) {
-      this.setState({ changeNameHolder: '' });
     }
   }
   textBlur() {
     if (this.state.editing === 0) {
       this.setState({ addItemHolder: 'Type to add items' });
-    } else if (this.state.editing === 1) {
-      this.setState({ changeNameHolder: 'Type to change' });
-      this.state.changeName ? this.submitFunction() : undefined;
     }
   }
   handleChange(event) {
     if (this.state.editing === 0) {
       this.setState({ addItemValue: event.target.value });
-    } else if (this.state.editing === 1) {
-      this.setState({ changeName: event.target.value });
     }
   }
   clickEnter(event) {
@@ -56,10 +46,6 @@ class TodoList extends Component {
       // console.log(this.state.addItemValue);
       this.props.addItemsFunc(num, this.state.addItemValue);
       this.setState({ addItemValue: '' });
-    } else if (this.state.changeName && this.state.editing === 1) {
-      // console.log(this.state.changeName);
-      this.props.changeNameFunc(num, this.state.changeName);
-      this.setState({ editing: 0 });
     }
   }
   clickEditListName() {
@@ -69,36 +55,12 @@ class TodoList extends Component {
   render() {
     return (
       <div className="listBlock">
-        <div className="listTitle">
-          {this.state.editing === 0 ?
-            <span>
-              {this.props.listName.substr(this.props.listName.indexOf(' ') + 1) }
-              <button type="button" onClick={this.clickEditListName}>Edit</button>
-            </span> :
-            <span>
-              <input
-                type="text"
-                value={this.state.changeName}
-                placeholder={this.state.changeNameHolder}
-                onKeyDown={this.clickEnter}
-                onChange={this.handleChange}
-                onFocus={this.textFocus}
-                onBlur={this.textBlur}
-              />
-              <input
-                type="submit"
-                value="Submit"
-                onClick={this.submitFunction}
-              />
-            </span>
-          }
-          <button
-            type="button"
-            onClick={() => this.props.deleteListsFunc(Number(this.props.listName.split(' ', 1)))}
-          >Delete</button>
-        </div><br />
+        <div className="listName">
+          {this.props.listName.substr(this.props.listName.indexOf(' ') + 1) }
+        </div>
         <div className="listInputBar">
           <input
+            className="listInputBox"
             type="text"
             value={this.state.addItemValue}
             placeholder={this.state.addItemHolder}
@@ -107,12 +69,11 @@ class TodoList extends Component {
             onFocus={this.textFocus}
             onBlur={this.textBlur}
           />
-          <input
-            type="submit"
-            value="Add"
+          <i
+            className="icon ion-plus-round myIcon whiteIcon"
             onClick={this.submitFunction}
           />
-        </div> <br />
+        </div>
         <div>
           {this.props.listItems.map(Is => <TodoItem
             itemName={Is.itemName}
@@ -121,7 +82,7 @@ class TodoList extends Component {
             deleteItemsFunc={this.props.deleteItemsFunc}
             showMode={this.props.showMode}
           />)}
-        </div><br /><br />
+        </div>
       </div>
     );
   }
@@ -138,8 +99,6 @@ TodoList.propTypes = {
   addItemsFunc: PropTypes.func.isRequired,
   checkItemsFunc: PropTypes.func.isRequired,
   deleteItemsFunc: PropTypes.func.isRequired,
-  changeNameFunc: PropTypes.func.isRequired,
-  deleteListsFunc: PropTypes.func.isRequired,
   showMode: PropTypes.number.isRequired,
 };
 

@@ -10,8 +10,6 @@ class TodoSidebar extends Component {
 
       changeName: this.props.listName.substr(this.props.listName.indexOf(' ') + 1),
       changeNameHolder: 'Type to change',
-      addItemHolder: 'Type to add items',
-      addItemValue: '',
       editing: 0,
     };
     this.textFocus = this.textFocus.bind(this);
@@ -29,17 +27,13 @@ class TodoSidebar extends Component {
     }
   }
   textBlur() {
-    if (this.state.editing === 0) {
-      this.setState({ addItemHolder: 'Type to add items' });
-    } else if (this.state.editing === 1) {
+    if (this.state.editing === 1) {
       this.setState({ changeNameHolder: 'Type to change' });
       this.state.changeName ? this.submitFunction() : undefined;
     }
   }
   handleChange(event) {
-    if (this.state.editing === 0) {
-      this.setState({ addItemValue: event.target.value });
-    } else if (this.state.editing === 1) {
+    if (this.state.editing === 1) {
       this.setState({ changeName: event.target.value });
     }
   }
@@ -51,11 +45,7 @@ class TodoSidebar extends Component {
   }
   submitFunction() {
     const num = Number(this.props.listName.split(' ', 1));
-    if (this.state.addItemValue && this.state.editing === 0) {
-      // console.log(this.state.addItemValue);
-      this.props.addItemsFunc(num, this.state.addItemValue);
-      this.setState({ addItemValue: '' });
-    } else if (this.state.changeName && this.state.editing === 1) {
+    if (this.state.changeName && this.state.editing === 1) {
       // console.log(this.state.changeName);
       this.props.changeNameFunc(num, this.state.changeName);
       this.setState({ editing: 0 });
@@ -67,60 +57,33 @@ class TodoSidebar extends Component {
 
   render() {
     return (
-      <div className="listBlock">
-        <div className="listTitle">
-          {this.state.editing === 0 ?
-            <span>
-              {this.props.listName.substr(this.props.listName.indexOf(' ') + 1) }
-              <button type="button" onClick={this.clickEditListName}>Edit</button>
-            </span> :
-            <span>
-              <input
-                type="text"
-                value={this.state.changeName}
-                placeholder={this.state.changeNameHolder}
-                onKeyDown={this.clickEnter}
-                onChange={this.handleChange}
-                onFocus={this.textFocus}
-                onBlur={this.textBlur}
-              />
-              <input
-                type="submit"
-                value="Submit"
-                onClick={this.submitFunction}
-              />
-            </span>
-          }
-          <button
-            type="button"
-            onClick={() => this.props.deleteListsFunc(Number(this.props.listName.split(' ', 1)))}
-          >Delete</button>
-        </div><br />
-        <div className="listInputBar">
-          <input
-            type="text"
-            value={this.state.addItemValue}
-            placeholder={this.state.addItemHolder}
-            onKeyDown={this.clickEnter}
-            onChange={this.handleChange}
-            onFocus={this.textFocus}
-            onBlur={this.textBlur}
-          />
-          <input
-            type="submit"
-            value="Add"
-            onClick={this.submitFunction}
-          />
-        </div> <br />
-        <div>
-          {this.props.listItems.map(Is => <TodoItem
-            itemName={Is.itemName}
-            itemState={Is.itemState}
-            checkItemsFunc={this.props.checkItemsFunc}
-            deleteItemsFunc={this.props.deleteItemsFunc}
-            showMode={this.props.showMode}
-          />)}
-        </div><br /><br />
+      <div className="sideBarRow">
+        {this.state.editing === 0 ?
+          <span className="threeBottons">
+            {this.props.listName.substr(this.props.listName.indexOf(' ') + 1) }
+            <button type="button" onClick={this.clickEditListName}>Edit</button>
+          </span> :
+          <span>
+            <input
+              type="text"
+              value={this.state.changeName}
+              placeholder={this.state.changeNameHolder}
+              onKeyDown={this.clickEnter}
+              onChange={this.handleChange}
+              onFocus={this.textFocus}
+              onBlur={this.textBlur}
+            />
+            <input
+              type="submit"
+              value="Submit"
+              onClick={this.submitFunction}
+            />
+          </span>
+        }
+        <button
+          type="button"
+          onClick={() => this.props.deleteListsFunc(Number(this.props.listName.split(' ', 1)))}
+        >Delete</button><br />
       </div>
     );
   }
@@ -128,15 +91,10 @@ class TodoSidebar extends Component {
 
 TodoSidebar.defaultProps = {
   listName: '0 This is a list',
-  listItems: [],
 };
 
 TodoSidebar.propTypes = {
   listName: PropTypes.string.isRequired,
-  listItems: PropTypes.array.isRequired,
-  addItemsFunc: PropTypes.func.isRequired,
-  checkItemsFunc: PropTypes.func.isRequired,
-  deleteItemsFunc: PropTypes.func.isRequired,
   changeNameFunc: PropTypes.func.isRequired,
   deleteListsFunc: PropTypes.func.isRequired,
   showMode: PropTypes.number.isRequired,

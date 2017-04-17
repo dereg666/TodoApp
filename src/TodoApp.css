@@ -10,9 +10,8 @@ body {
   align-items: right;
   justify-content: right;
   color: white;
-  //background-color: #185923;
-  background-color: rgba(155, 170, 181, 0.6);
-  box-shadow: 0 5px 7px 0 rgba(0,0,0,0.24), 0 0px 0px 0 rgba(0,0,0,0.19);
+  background-color: rgba(155, 168, 178, 0.7);
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24), 0 0px 0px 0 rgba(0,0,0,0.19);
 }
 
 .boxUndone {
@@ -36,38 +35,53 @@ body {
   justify-content: left;
   margin-right: 10px;
 }
-
+.side {
+  position: fixed;
+  left: 0;
+  top: 83px;
+  width : 23%;
+  height : calc(100% - 83px);
+  vertical-align: top;
+  border: solid rgba(221, 221, 221, 1);
+  border-radius: 2px;
+  background: rgba(244, 245, 246, 1);
+  border-width: 1px;
+  max-height : calc(100% - 83px);
+  box-shadow: 0 5px 7px 0 rgba(0,0,0,0.24), 0 0px 0px 0 rgba(0,0,0,0.19);
+}
 .sideBar {
   position: fixed;
   left: 0;
-  top: 11.2%;
+  top: 85px;
   width : 23%;
-  height : calc(88.8% - 50px);
+  height : calc(100% - 133px);
   vertical-align: top;
-  background-color: rgba(0, 0, 0, 0);
-  border-right: groove #185923;
+  background: rgba(0,0,0,0);
   border-width: 1px;
   overflow-y: auto;
-  max-height : calc(88% - 50px);
+  max-height : calc(100% - 133px);
 }
 .listArea {
   position: fixed;
   align-items: top;
   right:0;
-  top: 11.2%;
-  width : 75%;
+  top: 85px;
+  width : calc(77% - 5px);
   overflow-y: auto;
-  max-height : 88.8%;
+  max-height : calc(100% - 85px);
 }
 .TodoApp {
   display: -webkit-flex;
   display: flex;
   width : 100%;
-  height : 90%;
+  height : 100%;
 }
 .appInputBar {
   position: fixed;
   bottom: 0;
+  border: solid rgba(221, 221, 221, 1);
+  border-width: 1px;
+  background: rgba(251, 251, 251, 1);
   left: 0;
   height: 50px;
   width: 23%;
@@ -79,22 +93,21 @@ body {
   font-size: 20px;
   float: left;
   width: 88%;
-  padding: 8px 14px;
-  margin: 1% 1%;
+  padding: 8px 15px;
+  margin: 6px 3px;
   border: none;
-  border-bottom: 2px solid;
-  border-bottom-color: #18594a;
 }
 .appInputBox[type=text]:focus {
   outline-width: 0;
 }
 .appSubmitButton {
   padding: 3px 6px;
-  margin: 8px -50px;
+  margin: 13px -53px;
   font-size: 15px;
+  color: #74777a;
   background-color: white; /* Green */
   border-radius: 4px;
-  border: 1px solid #a0dba0;
+  border: 1px solid rgba(221, 221, 221, 1);
 }
 .appSubmitButton[type=submit]:focus {
   outline-width: 0;
@@ -107,19 +120,98 @@ body {
 }
 
 .todoItem {
-  height: 20px;
-  display: -webkit-flex;
-  display:         flex;
-  -webkit-align-items: right;
-          align-items: right;
-  -webkit-justify-content: right;
-          justify-content: right;
+  display: flex;
+  vertical-align: top;
+  width: calc(100% - 2em);
+  padding: 10px 0;
+  background-color: white;
+  margin: 10px 0 0 0;
+  border-radius: 4px;
 }
 
 .listBlock {
   display: inline-block;
-  vertical-align: top;
-  width: 22%;
+  position: relative;
+  width: 100%;
   height: 40%;
-  margin: 1em;
+  margin: 1em 1em 1em 1em;
+  border-radius: 4px;
+}
+
+.listInputBar {
+  display: flex;
+  vertical-align: top;
+  width: calc(100% - 2em);
+  
+  background-color: rgba(0, 18, 15, 0.48);
+  margin: 2px 0 2px 0;
+  border-radius: 4px;
+}
+
+.listInputBox {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  text-align: left;
+  font-size: 20px;
+  float: left;
+  padding: 10px 16px;
+  width: 88%;
+  border: none;
+}
+.listInputBox[type=text]:focus {
+  outline-width: 0;
+}
+
+.listInputBox::-webkit-input-placeholder {
+    color: #d1d5d6;
+}
+
+.listName {
+  color: #FFFFFF;
+  display:inline-block;
+  vertical-align: top;
+  width: auto;
+  background-color: rgba(0, 18, 15, 0.48);
+  margin: 2px 0 px 0;
+  padding: 10px 16px;
+  border-radius: 4px;
+}
+
+.itemName {
+  font-size: 20px;
+}
+
+.sideBarRow {
+  display:         flex;
+  vertical-align: top;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border-bottom: 1px solid;
+  padding: 10px 25px;
+  height: 30;
+  border-bottom-color: rgba(221, 221, 221, 1);
+}
+.sideBarRow[type=button]:focus {
+  outline-width: 0;
+}
+
+.threeBottons {
+  font-size: 20px;
+}
+
+.myIcon {
+  font-size: 23px;
+  position: absolute;
+  right: 2.2em;
+  vertical-align: middle;
+}
+
+.whiteIcon {
+  color: white;
+  top: 49px
+}
+
+.checkBox[type=checkBox] {
+  transform: scale(1.5);
 }
