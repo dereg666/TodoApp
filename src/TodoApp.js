@@ -129,6 +129,7 @@ class TodoApp extends Component {
                 changeNameFunc={this.changingName}
                 deleteListsFunc={this.deletingList}
                 showMode={this.state.showMode}
+                showModeFunc={this.setShowState}
               />)}
             </div>
             <div className="appInputBar">

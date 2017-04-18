@@ -14,12 +14,12 @@ class TodoItem extends Component {
       null :
       <div className="todoItem">
         <input
-          type="checkBox"
+          type="checkbox"
           className="checkBox"
           defaultChecked={this.props.itemState}
           onClick={() => this.props.checkItemsFunc(Number(this.props.itemName.split(' ', 1)))}
         />
-        <label className="itemName"htmlFor="item">{this.props.itemName.substr(this.props.itemName.indexOf(' ') + 1)}</label>
+        <div className="itemName">{this.props.itemName.substr(this.props.itemName.indexOf(' ') + 1)}</div>
         <i
           className="icon ion-trash-b myIcon"
           onClick={() => this.props.deleteItemsFunc(Number(this.props.itemName.split(' ', 1)))}

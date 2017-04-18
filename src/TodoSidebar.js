@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './TodoApp.css';
+import './css/ionicons.css';
+import './css/font-awesome.css';
 
 
 class TodoSidebar extends Component {
@@ -29,7 +31,6 @@ class TodoSidebar extends Component {
   textBlur() {
     if (this.state.editing === 1) {
       this.setState({ changeNameHolder: 'Type to change' });
-      this.state.changeName ? this.submitFunction() : undefined;
     }
   }
   handleChange(event) {
@@ -57,14 +58,19 @@ class TodoSidebar extends Component {
 
   render() {
     return (
-      <div className="sideBarRow">
+      <div className="sideBarRow" onClick={() => this.props.showModeFunc(Number(this.props.listName.split(' ', 1)) + 3)}>
+        <i className="fa fa-list-ul sideBarList" aria-hidden="true"></i>
         {this.state.editing === 0 ?
           <span className="threeBottons">
             {this.props.listName.substr(this.props.listName.indexOf(' ') + 1) }
-            <button type="button" onClick={this.clickEditListName}>Edit</button>
+            <i
+              className="icon ion-edit myIcon sideBarEdit"
+              onClick={this.clickEditListName}
+            ></i>
           </span> :
           <span>
             <input
+              className="sideBarInputBox"
               type="text"
               value={this.state.changeName}
               placeholder={this.state.changeNameHolder}
@@ -72,18 +78,18 @@ class TodoSidebar extends Component {
               onChange={this.handleChange}
               onFocus={this.textFocus}
               onBlur={this.textBlur}
+              autoFocus
             />
-            <input
-              type="submit"
-              value="Submit"
+            <i
+              className="icon ion-log-in myIcon sideBarEdit"
               onClick={this.submitFunction}
-            />
+            ></i>
           </span>
         }
-        <button
-          type="button"
+        <i
+          className="icon ion-trash-b myIcon sideBarDelete"
           onClick={() => this.props.deleteListsFunc(Number(this.props.listName.split(' ', 1)))}
-        >Delete</button><br />
+        ></i>
       </div>
     );
   }
@@ -97,6 +103,7 @@ TodoSidebar.propTypes = {
   listName: PropTypes.string.isRequired,
   changeNameFunc: PropTypes.func.isRequired,
   deleteListsFunc: PropTypes.func.isRequired,
+  showModeFunc: PropTypes.func.isRequired,
   showMode: PropTypes.number.isRequired,
 };
 

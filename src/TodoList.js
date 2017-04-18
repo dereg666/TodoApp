@@ -8,7 +8,7 @@ class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addItemHolder: 'Type to add items',
+      addItemHolder: 'Type to add todos in "' + this.props.listName.substr(this.props.listName.indexOf(' ') + 1) + '"...',
       addItemValue: '',
       editing: 0,
     };
@@ -53,38 +53,58 @@ class TodoList extends Component {
   }
 
   render() {
-    return (
-      <div className="listBlock">
-        <div className="listName">
-          {this.props.listName.substr(this.props.listName.indexOf(' ') + 1) }
+    let listShow = 0;
+    if (this.props.showMode < 2) {
+      for (let it = 0; it < this.props.listItems.length; it += 1) {
+        if (this.props.listItems[it]) {
+          listShow += Math.abs(this.props.listItems[it].itemState - this.props.showMode);
+        }
+      }
+      listShow = (listShow === 0 ? 0 : 1);
+    } else if (this.props.showMode === 2) {
+      listShow = 1;
+    }
+    if (listShow === 0 && this.props.showMode !== (Number(this.props.listName.split(' ', 1)) + 3)) {
+      return null;
+    }
+    else {
+      return (
+        <div className="listBlock">
+          {listShow === 1 ?
+            <div className="listName">
+              {this.props.listName.substr(this.props.listName.indexOf(' ') + 1) }
+            </div> : null
+          }
+          {this.props.showMode === (Number(this.props.listName.split(' ', 1)) + 3) ?
+            <div className="listInputBar">
+              <input
+                className="listInputBox"
+                type="text"
+                value={this.state.addItemValue}
+                placeholder={this.state.addItemHolder}
+                onKeyDown={this.clickEnter}
+                onChange={this.handleChange}
+                onFocus={this.textFocus}
+                onBlur={this.textBlur}
+              />
+              <i
+                className="icon ion-plus-round myIcon whiteIcon"
+                onClick={this.submitFunction}
+              />
+            </div> : null
+          }
+          <div>
+            {this.props.listItems.map(Is => <TodoItem
+              itemName={Is.itemName}
+              itemState={Is.itemState}
+              checkItemsFunc={this.props.checkItemsFunc}
+              deleteItemsFunc={this.props.deleteItemsFunc}
+              showMode={this.props.showMode}
+            />)}
+          </div>
         </div>
-        <div className="listInputBar">
-          <input
-            className="listInputBox"
-            type="text"
-            value={this.state.addItemValue}
-            placeholder={this.state.addItemHolder}
-            onKeyDown={this.clickEnter}
-            onChange={this.handleChange}
-            onFocus={this.textFocus}
-            onBlur={this.textBlur}
-          />
-          <i
-            className="icon ion-plus-round myIcon whiteIcon"
-            onClick={this.submitFunction}
-          />
-        </div>
-        <div>
-          {this.props.listItems.map(Is => <TodoItem
-            itemName={Is.itemName}
-            itemState={Is.itemState}
-            checkItemsFunc={this.props.checkItemsFunc}
-            deleteItemsFunc={this.props.deleteItemsFunc}
-            showMode={this.props.showMode}
-          />)}
-        </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
