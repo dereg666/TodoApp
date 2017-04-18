@@ -58,7 +58,7 @@ class TodoSidebar extends Component {
 
   render() {
     return (
-      <div className="sideBarRow" onClick={() => this.props.showModeFunc(Number(this.props.listName.split(' ', 1)) + 3)}>
+      <div className="sideBarRowList" onClick={() => this.props.showModeFunc(Number(this.props.listName.split(' ', 1)) + 3)}>
         <i className="fa fa-list-ul sideBarList" aria-hidden="true"></i>
         {this.state.editing === 0 ?
           <span className="threeBottons">

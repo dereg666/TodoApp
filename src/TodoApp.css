@@ -7,8 +7,8 @@ body {
   display: flex;
   width : 100%;
   height : 6%;
-  align-items: right;
-  justify-content: right;
+  align-items: left;
+  justify-content: left;
   color: white;
   background-color: rgba(155, 168, 178, 0.7);
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24), 0 0px 0px 0 rgba(0,0,0,0.19);
@@ -39,7 +39,7 @@ body {
   position: fixed;
   left: 0;
   top: 83px;
-  width : 23%;
+  width : 280px;
   height : calc(100% - 83px);
   vertical-align: top;
   border: solid rgba(221, 221, 221, 1);
@@ -53,7 +53,7 @@ body {
   position: fixed;
   left: 0;
   top: 85px;
-  width : 23%;
+  width : 280px;
   height : calc(100% - 133px);
   vertical-align: top;
   background: rgba(0,0,0,0);
@@ -66,7 +66,7 @@ body {
   align-items: top;
   right:0;
   top: 85px;
-  width : calc(77% - 5px);
+  width : calc(100% - 285px);
   overflow-y: auto;
   max-height : calc(100% - 85px);
 }
@@ -84,7 +84,7 @@ body {
   background: rgba(251, 251, 251, 1);
   left: 0;
   height: 50px;
-  width: 23%;
+  width: 280px;
 }
 .appInputBox {
   // background-color: #e3efe5;
@@ -102,7 +102,7 @@ body {
 }
 .appSubmitButton {
   padding: 3px 6px;
-  margin: 13px -53px;
+  margin: 13px -54px;
   font-size: 15px;
   color: #74777a;
   background-color: white; /* Green */
@@ -122,7 +122,7 @@ body {
 .todoItem {
   display: flex;
   vertical-align: top;
-  width: calc(100% - 2em);
+  width: 100%;
   padding: 10px 0;
   background-color: white;
   margin: 10px 0 0 0;
@@ -132,16 +132,16 @@ body {
 .listBlock {
   display: inline-block;
   position: relative;
-  width: 100%;
+  width: calc(100% - 2em);
   height: 40%;
-  margin: 1em 1em 1em 1em;
+  margin: 1em 0em 1em 1em;
   border-radius: 4px;
 }
 
 .listInputBar {
   display: flex;
   vertical-align: top;
-  width: calc(100% - 2em);
+  width: 100%;
   
   background-color: rgba(0, 18, 15, 0.48);
   margin: 2px 0 2px 0;
@@ -187,7 +187,19 @@ body {
   display: inline-flex;
   position: static;
   vertical-align: top;
-  width: 100%;
+  width: 280px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border-bottom: 1px solid;
+  padding: 10px 40px;
+  border-bottom-color: rgba(221, 221, 221, 1);
+}
+
+.sideBarRowList {
+  display: inline-flex;
+  position: static;
+  vertical-align: top;
+  width: 230px;
   background-color: rgba(0, 0, 0, 0);
   border: none;
   border-bottom: 1px solid;
@@ -208,9 +220,9 @@ body {
 }
 
 .myIcon {
-  font-size: 23px;
+  font-size: 22px;
   position: absolute;
-  right: 2.2em;
+  right: 1em;
   vertical-align: middle;
 }
 
