@@ -54,6 +54,7 @@ class TodoApp extends Component {
       };
       const temp = this.state.lists;
       temp.push(addList);
+      this.setState({ showMode: (temp.length + 2) });
       this.setState({ lists: temp });
       this.setState({ addListValue: '' });
     }
@@ -111,6 +112,25 @@ class TodoApp extends Component {
     this.setState({ numUndoneDone: tempUndoneDone });
   }
   render() {
+    let s1 = null;
+    let s2 = null;
+    let s3 = null;
+    if (this.state.showMode === 0) {
+      s3 = {
+        backgroundColor: 'rgb(93, 161, 218)',
+        color: '#FFFFFF',
+      };
+    } else if (this.state.showMode === 1) {
+      s2 = {
+        backgroundColor: 'rgb(93, 161, 218)',
+        color: '#FFFFFF',
+      };
+    } else if (this.state.showMode === 2) {
+      s1 = {
+        backgroundColor: 'rgb(93, 161, 218)',
+        color: '#FFFFFF',
+      };
+    }
     return (
       <div>
         <div className="header">
@@ -121,9 +141,9 @@ class TodoApp extends Component {
         <div className="TodoAPP">
           <div className="side">
             <div className="sideBar">
-              <button className="sideBarRow threeBottons" type="button" onClick={() => this.setShowState(2)}>Show All</button>
-              <button className="sideBarRow threeBottons" type="button" onClick={() => this.setShowState(1)}>Show Undone</button>
-              <button className="sideBarRow threeBottons" type="button" onClick={() => this.setShowState(0)}>Show Done</button>
+              <button className="sideBarRow threeBottons" style={s1} type="button" onClick={() => this.setShowState(2)}>Show All</button>
+              <button className="sideBarRow threeBottons" style={s2} type="button" onClick={() => this.setShowState(1)}>Show Undone</button>
+              <button className="sideBarRow threeBottons" style={s3} type="button" onClick={() => this.setShowState(0)}>Show Done</button>
               {this.state.lists.map(l => <TodoSidebar
                 listName={l.todoName}
                 changeNameFunc={this.changingName}

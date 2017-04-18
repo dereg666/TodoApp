@@ -13,12 +13,16 @@ class TodoItem extends Component {
     return ((this.props.showMode - this.props.itemState) === 0 ?
       null :
       <div className="todoItem">
-        <input
-          type="checkbox"
-          className="checkBox"
-          defaultChecked={this.props.itemState}
-          onClick={() => this.props.checkItemsFunc(Number(this.props.itemName.split(' ', 1)))}
-        />
+        {this.props.itemState === 0 ?
+          <i
+            className="icon ion-android-checkbox-outline-blank checkBox"
+            onClick={() => this.props.checkItemsFunc(Number(this.props.itemName.split(' ', 1)))}
+          /> :
+          <i
+            className="icon ion-android-checkbox-outline checkBox"
+            onClick={() => this.props.checkItemsFunc(Number(this.props.itemName.split(' ', 1)))}
+          />
+        }
         <div className="itemName">{this.props.itemName.substr(this.props.itemName.indexOf(' ') + 1)}</div>
         <i
           className="icon ion-trash-b myIcon"
