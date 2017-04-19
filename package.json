@@ -2,10 +2,12 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dereg666.github.io/TodoApp",
   "dependencies": {
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-icons": "^2.2.3",
     "react-native-vector-icons": "^4.0.1",
     "react-onclickoutside": "^5.11.1"
   },
@@ -15,6 +17,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "gh-pages": "^0.12.0",
     "react-onclickoutside": "^5.11.1",
     "react-scripts": "0.9.5"
   },
@@ -22,6 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   }
 }
